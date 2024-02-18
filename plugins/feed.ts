@@ -58,6 +58,9 @@ export interface FeedItemOptions {
   /** The item description */
   description?: string | ((data: Data) => string | undefined);
 
+  /** The item author */
+  author?: string | ((data: Data) => string | undefined);
+
   /** The item published date */
   published?: string | ((data: Data) => Date | undefined);
 
@@ -115,6 +118,7 @@ export interface FeedItem {
   title: string;
   url: string;
   description: string;
+  author?: string;
   published: Date;
   updated?: Date;
   content: string;
@@ -159,6 +163,7 @@ export default function (userOptions?: Options) {
             title: getDataValue(data, items.title),
             url: site.url(data.url, true),
             description: getDataValue(data, items.description),
+            author: getDataValue(data, items.author),
             published: getDataValue(data, items.published),
             updated: getDataValue(data, items.updated),
             content: fixedContent,
@@ -237,6 +242,7 @@ function generateRss(data: FeedData, file: string): string {
               "#text": item.url,
             },
             description: item.description,
+            author: item.author,
             "content:encoded": item.content,
             pubDate: item.published.toUTCString(),
             "atom:updated": item.updated?.toISOString(),
@@ -261,6 +267,7 @@ function generateJson(data: FeedData, file: string): string {
         id: item.url,
         url: item.url,
         title: item.title,
+        authors: [item.author],
         content_html: item.content,
         date_published: item.published.toUTCString(),
         date_modified: item.updated?.toUTCString(),
