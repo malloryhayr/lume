@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project try to adheres to [Semantic Versioning](https://semver.org/).
 Go to the `v1` branch to see the changelog of Lume 1.
 
-## [2.1.0] - Unreleased
+## [2.1.0] - 2024-02-22
 ### Added
 - Support `x-default` for unmatched languages [#528] & [#532]
   - `multilanguage` plugin
@@ -15,8 +15,9 @@ Go to the `v1` branch to see the changelog of Lume 1.
 - New plugin: `og_images` [#534].
 - New plugin: `robots` [#570].
 - New command `lume cms`.
-- `onDemand` plugin: support async extraData function.
-- `lume:*` global events.
+- `onDemand` plugin: support async extraData function  [#560],  [#561].
+- Core: `lume:*` global events.
+- Core: `lume.getWatcher()` function.
 
 ### Changed
 - BREAKING: Removed deprecated `--unstable` flag to the default `lume` task.
@@ -30,7 +31,8 @@ Go to the `v1` branch to see the changelog of Lume 1.
   // New
   import { gl } from "npm:date-fns/locale/gl";
   ```
-- Allow to get value from attribute in CSS query of `getDataValue()` function. See `metas` plugin for a clear example.
+- Allow to get value from attribute in CSS query of `getDataValue()` function [#556], [#558].
+  See `metas` plugin for a clear example.
 - `favicon` plugin: [#562]
   - Default ico size changed to 48.
   - Add `sizes="any"` to the svg icon.
@@ -39,11 +41,12 @@ Go to the `v1` branch to see the changelog of Lume 1.
   - URL transformation direction is more visually distinct. [#563]
   - colors replaced to `gray` to support terminals that does not support `dim` colors. [#566]
 - `deno task lume upgrade` removes the `deno.lock` file [#527].
+- `transform_images` plugin: don't enlarge images by default [#530].
 
 ### Fixed
 - Pages filtered with `filter_pages` plugin are exported to the sitemap.
 - Ensure `site.options.server.middlewares` array is always defined.
-- Updated dependencies: `std`, `date-fns`, `lightningcss`, `vento`, `terser`, `autoprefixer`, `esbuild`, `sass`, `unocss`, `deno-dom`,  `esbuild`, `postcss`, `postcss-import`, `preact`, `mdx`, `react` types.
+- Updated dependencies: `std`, `date-fns`, `lightningcss`, `vento`, `terser`, `autoprefixer`, `esbuild`, `sass`, `unocss`, `deno-dom`,  `esbuild`, `postcss`, `postcss-import`, `preact`, `preact-render-to-string`, `mdx`, `terser`, `liquid`, `react` types.
 - `site.hooks.addMarkdownItPlugin` accepts multiple options
 - `cli` commands are loaded dynamically.
 - Added missing `Lume.Data.nav` variable [#567].
@@ -271,6 +274,7 @@ Go to the `v1` branch to see the changelog of Lume 1.
 [#527]: https://github.com/lumeland/lume/issues/527
 [#528]: https://github.com/lumeland/lume/issues/528
 [#529]: https://github.com/lumeland/lume/issues/529
+[#530]: https://github.com/lumeland/lume/issues/530
 [#532]: https://github.com/lumeland/lume/issues/532
 [#534]: https://github.com/lumeland/lume/issues/534
 [#535]: https://github.com/lumeland/lume/issues/535
@@ -282,6 +286,10 @@ Go to the `v1` branch to see the changelog of Lume 1.
 [#550]: https://github.com/lumeland/lume/issues/550
 [#551]: https://github.com/lumeland/lume/issues/551
 [#552]: https://github.com/lumeland/lume/issues/552
+[#556]: https://github.com/lumeland/lume/issues/556
+[#558]: https://github.com/lumeland/lume/issues/558
+[#560]: https://github.com/lumeland/lume/issues/560
+[#561]: https://github.com/lumeland/lume/issues/561
 [#562]: https://github.com/lumeland/lume/issues/562
 [#563]: https://github.com/lumeland/lume/issues/563
 [#566]: https://github.com/lumeland/lume/issues/566
@@ -289,7 +297,7 @@ Go to the `v1` branch to see the changelog of Lume 1.
 [#569]: https://github.com/lumeland/lume/issues/569
 [#570]: https://github.com/lumeland/lume/issues/570
 
-[2.1.0]: https://github.com/lumeland/lume/compare/v2.0.3...HEAD
+[2.1.0]: https://github.com/lumeland/lume/compare/v2.0.3...v2.1.0
 [2.0.3]: https://github.com/lumeland/lume/compare/v2.0.2...v2.0.3
 [2.0.2]: https://github.com/lumeland/lume/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/lumeland/lume/compare/v2.0.0...v2.0.1
